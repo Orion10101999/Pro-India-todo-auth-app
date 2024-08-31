@@ -3,7 +3,7 @@ dotenv.config();
 
 import express from 'express';
 import cookieParser from 'cookie-parser';
-// import path from 'path';
+import path from 'path';
 import connectDB from './config/connectDB.js';
 import router from './routes/index.js';
 import todoRouter from './routes/todo.route.js';
@@ -24,9 +24,9 @@ connectDB()
     console.log('MongoDB Atlas connection failed', err);
   });
 
-// const __dirname = path.resolve();
+const __dirname = path.resolve();
 
-// app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(express.static(path.join(__dirname, '/client/dist')));
 app.use(express.json());
 app.use(cookieParser());
 
