@@ -40,14 +40,6 @@ const router = createBrowserRouter([
                 path : "",
                 element : <Home/>,                
             },
-            {
-                path : 'updatetodo/:id',
-                element : <AuthLayout><UpdateTodo /></AuthLayout>
-            },
-            {
-                path : 'deletetodo/:id',
-                element : <AuthLayout><DeleteTodo /></AuthLayout>
-            }
         ]
     }
 ])
