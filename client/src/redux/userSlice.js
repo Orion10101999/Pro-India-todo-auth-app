@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { act } from "react"
 
 const initialState = {
     _id : "",
@@ -21,7 +20,7 @@ export const userSlice = createSlice({
         setToken : (state , action) => {
             state.token = action.payload
         },
-        logout : (state , action) => {
+        logout : (state ) => {
             state._id = ""
             state.name = ""
             state.email = ""
