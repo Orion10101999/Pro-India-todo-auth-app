@@ -46,7 +46,7 @@ const RegisterPage = () => {
         e.stopPropagation();
         // Handle form submission here, e.g., send data to an API
 
-        const URL = `${import.meta.env.VITE_APP_BACKEND_URL}/api/register`
+        const URL = `/api/register`
 
         console.log('Form submitted:', data);
         try {

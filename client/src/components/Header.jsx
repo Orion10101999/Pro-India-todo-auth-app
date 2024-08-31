@@ -1,11 +1,11 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <header className="flex justify-between items-center bg-green-400 text-white p-4">
-            <div className="flex space-x-4">
-            <h1 className="text-xl">Todo List App Pro India</h1>
+        <header className="flex justify-between items-center bg-blue-600 text-white p-4">
+            <div className="flex justify-center items-center space-x-4">
+            <h1 className="text-xl">Pro India</h1>
             <h2><Link to={"/"}>Home</Link></h2>
 
             </div>

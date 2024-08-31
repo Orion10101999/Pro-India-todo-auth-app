@@ -40,7 +40,7 @@ const CheckPasswordPage = () => {
         console.log(location?.state?._id);
         console.log(data.password);
 
-        const URL = `${import.meta.env.VITE_APP_BACKEND_URL}/api/password`
+        const URL = `/api/password`
         try {
           const response = await axios({
             method : 'post',

@@ -4,11 +4,9 @@ import RegisterPage from "../pages/RegisterPage";
 import CheckEmailPage from "../pages/CheckEmailPage";
 import CheckPasswordPage from "../pages/CheckPasswordPage";
 import Home from "../pages/Home";
-import MessagePage from "../pages/MessagePage";
 import AuthLayout from "../layout";
 import ForgotPassword from "../pages/ForgotPassword";
 import ShowTodos from "../pages/ShowTodos";
-import TodoCreate from "../pages/TodoCreate";
 import DeleteTodo from "../pages/DeleteTodo";
 import UpdateTodo from "../pages/UpdateTodo";
 
@@ -39,23 +37,8 @@ const router = createBrowserRouter([
                 element : <AuthLayout><ForgotPassword/></AuthLayout>
             },
             {
-                path : "/",
-                element : <Home/>,
-                children : [
-                    {
-                        path : ':userId',
-                        element : <MessagePage />
-                    },
-                ]
-                
-            },
-            {
-                path : 'showtodos',
-                element : <AuthLayout><ShowTodos /></AuthLayout>
-            },
-            {
-                path : 'addtodo',
-                element : <AuthLayout><TodoCreate /></AuthLayout>
+                path : "",
+                element : <Home/>,                
             },
             {
                 path : 'updatetodo/:id',

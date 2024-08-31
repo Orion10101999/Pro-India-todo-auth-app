@@ -3,32 +3,32 @@ import Todo from '../models/todo.model.js'
 const createTodo = async (req, res, next) => {
     try {
         const todo = new Todo(req.body);
-        const data = await todo.save();
-        res.status(201).json(data);
+        await todo.save();
+        res.status(201).json({message : "todo created Sucessfully" ,todo});
     } catch (error) {
         next(error);
     }
 };
 
-const getTodos = async (req, res) => {
+const getTodos = async (req, res, next) => {
     try {
         const todos = await Todo.find();
-        res.json(todos);
+        res.status(201).json({message : "Sucess" ,todos});
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        next(error)
     }
 };
 
-const getTodoById = async (req, res) => {
+const getTodoById = async (req, res, next) => {
     try {
         const todo = await Todo.findOne({ _id: req.params.id});
         if (!todo) {
             return res.status(404).json({ message: 'Todo not found' });
             }
-            res.json(todo);
+            res.status(201).json({message : "Sucess", todo});
             } catch (error) {
-                res.status(400).json({ error: error.message });
-                }
+            next(error)    
+            }
                 };
                 
                 
@@ -45,21 +45,21 @@ const updateTodo = async (req, res) => {
         if (!todo) {
             return res.status(404).json({ message: 'Todo not found' });
         }
-        res.json(todo);
+        res.status(201).json({message : "todo updated sucessfully",todo});
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
 };
 
-const deleteTodo = async (req, res) => {
+const deleteTodo = async (req, res , next) => {
     try {
         const todo = await Todo.findOneAndDelete({ _id: req.params.id });
         if (!todo) {
             return res.status(404).json({ message: 'Todo not found' });
         }
-        res.json({ message: 'Todo deleted successfully' });
+        res.status(201).json({ message: 'Todo deleted successfully' });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        next(error)
     }
 };
 
