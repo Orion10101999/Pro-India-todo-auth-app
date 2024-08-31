@@ -8,6 +8,8 @@ import AuthLayout from "../layout";
 import ForgotPassword from "../pages/ForgotPassword";
 import Logout from "../pages/Logout";
 import Profile from "../components/Profile";
+import AddTodo from "../components/AddTodo";
+import ShowTodos from "../components/ShowTodos";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +47,14 @@ const router = createBrowserRouter([
             {
                 path : "",
                 element : <Home/>,                
+            },
+            {
+                path : "showtodos",
+                element : <ShowTodos/>,                
+            },
+            {
+                path : "addtodo",
+                element : <AddTodo/>,                
             },
         ]
     }

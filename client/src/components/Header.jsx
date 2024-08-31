@@ -14,6 +14,9 @@ const Header = () => {
             </div>
             <div className="flex space-x-4">
                 {user.name ? <>
+
+                <h2><Link to={"/addtodo"}><span className='hover:font-bold'>AddTodos</span></Link></h2>
+                <h2><Link to={"/showtodos"}><span className='hover:font-bold'>ShowTodos</span></Link></h2>
                 <h2><Link to={"/logout"}><span className='hover:font-bold'>Logout</span></Link></h2>
                 <h2><Link to={"/profile"}>{user.name}</Link></h2>
                 
