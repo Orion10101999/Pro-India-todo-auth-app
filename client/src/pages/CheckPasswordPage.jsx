@@ -4,7 +4,6 @@ import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { setToken } from '../redux/userSlice'
-import Avatar from '../components/Avatar'
 
 const CheckPasswordPage = () => {
   const [data, setData] = useState({
@@ -74,12 +73,7 @@ const CheckPasswordPage = () => {
 
         <div className='w-fit mx-auto mb-2 flex justify-center items-center flex-col'>
 
-          <Avatar
-          width = {70}
-          height = {70}
-          name = {location?.state?.name}
-          imageUrl = {location?.state?.profile_pic}
-          />
+        
           <h2 className='font-semibold text-lg mt-1'>{location?.state?.name}</h2>
         </div>
         <form className='grid gap-4 mt-3' onSubmit={handleSubmit}>

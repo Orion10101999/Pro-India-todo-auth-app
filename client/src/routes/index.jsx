@@ -6,10 +6,6 @@ import CheckPasswordPage from "../pages/CheckPasswordPage";
 import Home from "../pages/Home";
 import AuthLayout from "../layout";
 import ForgotPassword from "../pages/ForgotPassword";
-import ShowTodos from "../pages/ShowTodos";
-import DeleteTodo from "../pages/DeleteTodo";
-import UpdateTodo from "../pages/UpdateTodo";
-
 
 const router = createBrowserRouter([
     {
