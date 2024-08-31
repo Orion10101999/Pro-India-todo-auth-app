@@ -30,7 +30,7 @@ const CheckPasswordPage = () => {
         [name] : value
       }
     })
-    console.log(data);
+  
   }
 
   const handleSubmit = async (e) => {

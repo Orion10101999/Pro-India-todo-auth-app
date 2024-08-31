@@ -4,6 +4,8 @@ import { logout, setUser } from "../redux/userSlice"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import CheckEmailPage from "./CheckEmailPage"
+import AddTodo from "../components/AddTodo"
+import ShowTodos from "../components/ShowTodos"
 
 const Home = () => {
   const user = useSelector(state => state.user)
@@ -39,7 +41,17 @@ const Home = () => {
   return (
     <div>
       {
-      user ? <h1>Home</h1> : <CheckEmailPage/>
+      user ? <div className="flex justify-center items-center gap-10">
+        <div className="">
+
+      <AddTodo/>
+        </div>
+        <div className="">
+
+      <ShowTodos/>
+        </div>
+      
+      </div> : <CheckEmailPage/>
       
       }
       </div>
