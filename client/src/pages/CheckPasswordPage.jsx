@@ -36,8 +36,6 @@ const CheckPasswordPage = () => {
   const handleSubmit = async (e) => {
         e.preventDefault()
         e.stopPropagation()
-        console.log(location?.state?._id);
-        console.log(data.password);
 
         const URL = `/api/password`
         try {
@@ -50,9 +48,8 @@ const CheckPasswordPage = () => {
             },
             withCredentials : true
           })
-          console.log(response);
           toast.success(response.data.message)
-          console.log(response?.data?.token);
+          
           if(response.data.success){
             dispatch(setToken(response?.data?.token))
             localStorage.setItem('token',response?.data?.token)
