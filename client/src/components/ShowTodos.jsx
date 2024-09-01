@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const ShowTodos = () => {
   const [todos, setTodos] = useState([]);
   const [editingTodo, setEditingTodo] = useState(null);
   const [editTitle, setEditTitle] = useState('');
   const [editDescription, setEditDescription] = useState('');
-  const [editStatus, setEditStatus] = useState('To do');
-
-console.log(editStatus);
+  const [editStatus, setEditStatus] = useState('To Do');
 
   const fetchTodos = async () => {
     try {
@@ -16,37 +15,43 @@ console.log(editStatus);
       setTodos(response.data.todos);
     } catch (error) {
       console.error('Failed to fetch todos:', error);
+      // Optional: Add user feedback for error
     }
   };
-
 
   const deleteTodo = async (id) => {
     try {
-      await axios.delete(`/api/todo/${id}`);
-      fetchTodos(); 
+      const response = await axios.delete(`/api/todo/${id}`);
+      toast.success(response.data.message)
+      fetchTodos();
     } catch (error) {
       console.error('Failed to delete todo:', error);
+      toast.error(error.message)
+      // Optional: Add user feedback for error
     }
   };
 
-  
   const startEditing = (todo) => {
     setEditingTodo(todo._id);
     setEditTitle(todo.title);
     setEditDescription(todo.description);
     setEditStatus(todo.status);
   };
+
   const saveTodo = async (id) => {
     try {
-      await axios.put(`/api/todo/${id}`, {
+      
+      const response = await axios.put(`/api/todo/${id}`, {
         title: editTitle,
         description: editDescription,
-        status: editStatus, 
+        status: editStatus,
       });
+      toast.success(response.data.message)
       setEditingTodo(null);
       fetchTodos();
     } catch (error) {
       console.error('Failed to update todo:', error);
+      toast.error(error.message)
     }
   };
 
@@ -86,18 +91,20 @@ console.log(editStatus);
                   <option value="In Progress">In Progress</option>
                   <option value="Done">Done</option>
                 </select>
-                <button
-                  onClick={() => saveTodo(todo._id)}
-                  className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
-                >
-                  Save
-                </button>
-                <button
-                  onClick={() => setEditingTodo(null)}
-                  className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
-                >
-                  Cancel
-                </button>
+                <div className="flex space-x-2 mt-2">
+                  <button
+                    onClick={() => saveTodo(todo._id)}
+                    className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
+                  >
+                    Save
+                  </button>
+                  <button
+                    onClick={() => setEditingTodo(null)}
+                    className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600"
+                  >
+                    Cancel
+                  </button>
+                </div>
               </div>
             ) : (
               <div>
