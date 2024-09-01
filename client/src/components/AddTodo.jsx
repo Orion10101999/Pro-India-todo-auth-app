@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const AddTodo = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [status, setStatus] = useState('To Do');
-    const [message, setMessage] = useState('');
+    const [status, setStatus] = useState('To Do')
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,21 +18,23 @@ const AddTodo = () => {
 
         try {
             const response = await axios.post('/api/todo/create', newTodo);
-            setMessage(response.data.message);
+            
+            toast.success(response?.data?.message)
+            
             // Clear form fields after successful submission
             setTitle('');
             setDescription('');
             setStatus('To Do');
         } catch (error) {
-            setMessage('Failed to create todo. Please try again.');
+            toast.error(error.message)
             console.error(error);
         }
     };
 
     return (
-        <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+        <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md mt-5">
             <h2 className="text-2xl font-bold mb-4">Add New Todo</h2>
-            {message && <p className="mb-4 text-green-500">{message}</p>}
+        
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label className="block text-gray-700">Title</label>

@@ -6,7 +6,7 @@ const Header = () => {
     const user = useSelector(state => state.user)
     
     return (
-        <header className="flex justify-between items-center bg-blue-600 text-white p-4">
+        <header className="flex justify-between items-center bg-slate-500 text-white p-4">
             <div className="flex justify-center items-center space-x-4">
             <h1 className="text-xl">Pro India</h1>
             <h2><Link to={"/"}>Home</Link></h2>
