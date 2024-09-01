@@ -66,7 +66,7 @@ const ShowTodos = () => {
         {todos.map((todo) => (
           <li
             key={todo._id}
-            className="mb-2 p-4 border rounded-md shadow-sm hover:shadow-lg transition-shadow duration-300 ease-in-out bg-yellow-200"
+            className="my-1 mx-5 p-5 border rounded-md shadow-sm hover:shadow-lg transition-shadow duration-300 ease-in-out bg-yellow-200"
           >
             {editingTodo === todo._id ? (
               <div className="space-y-2">
